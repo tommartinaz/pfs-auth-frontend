@@ -18,13 +18,11 @@ export default ChildComponent => {
         }
 
         render() {
-            console.log(this.props.auth);
             return <ChildComponent { ...this.props } />;
         }
     }
 
     const mapStateToProps = state => {
-        console.log("APP STATE", state)
         return {
             auth: state.auth.authenticated
         };
