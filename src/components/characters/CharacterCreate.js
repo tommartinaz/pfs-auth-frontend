@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createCharacter } from '../../redux/actions/characterActions';
 import CharacterForm from './CharacterForm';
 
 const CharacterCreate = props => {
     const onSubmit = formValues => {
-        console.log("CREATE COMP", formValues);
+        props.createCharacter(formValues);
     }
 
     return (
@@ -17,4 +18,4 @@ const CharacterCreate = props => {
     );
 }
 
-export default CharacterCreate;
+export default connect(null, { createCharacter })(CharacterCreate);

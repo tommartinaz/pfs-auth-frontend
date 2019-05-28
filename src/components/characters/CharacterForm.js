@@ -18,7 +18,7 @@ class CharacterForm extends Component {
     renderSelector = ({ input, label, selector }) => {
         const list = selector.map(el => {
             return (
-                <option key={el.id} value={el.name}>{el.name.toUpperCase()}</option>
+                <option key={el.id} value={el.id}>{el.name.toUpperCase()}</option>
             );
         });
         return (
@@ -33,11 +33,10 @@ class CharacterForm extends Component {
     }
 
     onSubmit = formValues => {
-        console.log(formValues);
+        this.props.onSubmit(formValues);;
     }
 
     render() {
-        console.log(this.props);
         const { handleSubmit, pristine, reset, alignments, races, classes } = this.props;
         return (
             <form className="ui form" onSubmit={handleSubmit(this.onSubmit)}>
