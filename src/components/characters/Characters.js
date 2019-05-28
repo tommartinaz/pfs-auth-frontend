@@ -11,13 +11,13 @@ class Characters extends Component {
 
     render() {
         return (
-            <div>Character list</div>
+            <div>Character list {this.props.characterList.length}</div>
         );
     }
 }
 
 const mapStateToProps = state => ({
-    characterList: state.characters
+    characterList: state.characters.myCharacters || []
 });
 
 export default compose(
