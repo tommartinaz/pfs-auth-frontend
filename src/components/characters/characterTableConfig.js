@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-export const characterColumns = (options) => {
+export const characterColumns = () => {
     return [
         {
             accessor: 'name',
@@ -25,7 +26,7 @@ export const characterColumns = (options) => {
         {
             accessor: 'edit',
             Header: 'Manage',
-            Cell: row => <button onClick={() => console.log(row.original)}>Click Me</button>
+            Cell: row => <Link to={`/characters/${row.original.id}/edit`}>Edit</Link>
         }
     ];
 };
