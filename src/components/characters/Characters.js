@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import { fetchCharacters } from '../../redux/actions/characterActions';
 import requireAuth from '../requireAuth';
-import { characterColumns } from './characterTableConfig';
+import { characterColumns } from '../../shared/tableColumns';
 
 class Characters extends Component {
     componentDidMount() {
