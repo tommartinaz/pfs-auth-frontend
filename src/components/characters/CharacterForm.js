@@ -67,9 +67,9 @@ const mapStateToProps = state => {
     const { characterOptions } = state;
     const { races, classes, alignments } = characterOptions;
     return {
-        alignments,
-        classes,
-        races
+        alignments: Object.values(alignments),
+        classes: Object.values(classes),
+        races: Object.values(races)
     }
 }
 export default compose(
