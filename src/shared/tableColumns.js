@@ -26,7 +26,14 @@ export const characterColumns = () => {
         {
             accessor: 'edit',
             Header: 'Manage',
-            Cell: row => <Link to={`/characters/${row.original.id}/edit`}>Edit</Link>
+            Cell: row => {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <Link to={`/characters/${row.original.id}`}>View</Link>
+                        <Link to={`/characters/${row.original.id}/edit`}>Edit</Link>
+                    </div>
+                )
+            }
         }
     ];
 };
