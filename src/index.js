@@ -12,6 +12,7 @@ import Signout from './components/auth/Signout';
 import Characters from './components/characters/Characters';
 import CharacterCreate from './components/characters/CharacterCreate';
 import CharacterEdit from './components/characters/CharacterEdit';
+import Character from './components/characters/Character';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -23,6 +24,7 @@ ReactDOM.render(
                     <Route path='/signout' component={Signout} />
                     <Route path='/characters' exact component={Characters} />
                     <Route path='/characters/new' component={CharacterCreate} />
+                    <Route path='/characters/:characterId' exact component={Character} />
                     <Route path='/characters/:characterId/edit' component={CharacterEdit} />
                 </Switch>
             </App>
