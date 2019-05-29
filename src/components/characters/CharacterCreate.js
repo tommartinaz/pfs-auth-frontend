@@ -6,6 +6,7 @@ import CharacterForm from './CharacterForm';
 const CharacterCreate = props => {
     const onSubmit = formValues => {
         props.createCharacter(formValues);
+        props.history.push('/characters');
     }
 
     return (
