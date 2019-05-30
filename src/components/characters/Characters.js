@@ -45,7 +45,7 @@ class Characters extends Component {
 }
 
 const mapStateToProps = state => ({
-    characterList: Object.values(state.characters),
+    characterList: Object.values(state.characters).filter(character => character.player_id === localStorage.getItem('playerId')),
     characterOptions: state.characterOptions
 });
 
