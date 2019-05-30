@@ -6,10 +6,11 @@ import * as actions from '../../redux/actions/authActions';
 class Signout extends Component {
     componentDidMount() {
         this.props.signout();
+        setTimeout(() => this.props.history.push('/'), 5000)
     }
 
     render() {
-        return <div>Log in again to see your characters</div>
+        return <div>Thank you for using the tool.</div>
     }
 }
 
