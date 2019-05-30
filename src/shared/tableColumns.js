@@ -37,3 +37,26 @@ export const characterColumns = () => {
         }
     ];
 };
+
+export const scenarioTableColumns = [
+    {
+        accessor: 'season_number',
+        Header: 'Season',
+    },
+    {
+        accessor: 'scenario_number',
+        Header: 'Scenario #'
+    },
+    {
+        accessor: 'name',
+        Header: 'Title'
+    },
+    {
+        accessor: 'low_level',
+        Header: 'Low Level',
+    },
+    {
+        accessor: 'high_level',
+        Header: 'High Level'
+    }
+];

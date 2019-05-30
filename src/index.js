@@ -13,6 +13,7 @@ import Characters from './components/characters/Characters';
 import CharacterCreate from './components/characters/CharacterCreate';
 import CharacterEdit from './components/characters/CharacterEdit';
 import Character from './components/characters/Character';
+import ScenarioList from './components/scenarios/ScenarioList';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -26,6 +27,7 @@ ReactDOM.render(
                     <Route path='/characters/new' component={CharacterCreate} />
                     <Route path='/characters/:characterId' exact component={Character} />
                     <Route path='/characters/:characterId/edit' component={CharacterEdit} />
+                    <Route path='/scenarios' component={ScenarioList} />
                 </Switch>
             </App>
         </BrowserRouter>
