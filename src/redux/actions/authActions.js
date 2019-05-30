@@ -2,10 +2,8 @@ import pfsApi from '../../api';
 import { AUTH_ERROR, AUTH_USER } from '../types';
 
 export const signup = (formValues, callback) => async dispatch => {
-    console.log("ACTION CREATOR", formValues, callback);
     try {
         const response = await pfsApi.post('/signup', formValues);
-        console.log("RESP", response)
         dispatch({
             type: AUTH_USER,
             payload: response.data.token

@@ -37,6 +37,7 @@ class Characters extends Component {
                     data={this.populateCharacterDetails()}
                     columns={characterColumns(this.props.characterOptions)}
                     filterable={true}
+                    minRows={this.props.characterList.length + 2}
                 />
             </div>
         );

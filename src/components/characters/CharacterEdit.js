@@ -5,7 +5,6 @@ import CharacterForm from './CharacterForm';
 
 class CharacterEdit extends Component {
     componentDidMount() {
-        console.log("MOUNTED", this.props.match)
         this.props.fetchCharacter(this.props.match.params.characterId);
     }
 
@@ -14,7 +13,6 @@ class CharacterEdit extends Component {
     }
 
     render() {
-        console.log("EDIT COMOPNENT")
         const { character } = this.props;
         if(!character) {
             return <div>Loading...</div>;
