@@ -18,6 +18,7 @@ import Home from './components/Home';
 import ScenarioCreate from './components/scenarios/ScenarioCreate';
 import ScenarioEdit from './components/scenarios/ScenarioEdit';
 import Scenario from './components/scenarios/Scenario';
+import CharacterDelete from './components/characters/CharacterDelete';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -32,6 +33,7 @@ ReactDOM.render(
                     <Route path='/characters/new' component={CharacterCreate} />
                     <Route path='/characters/:characterId' exact component={Character} />
                     <Route path='/characters/:characterId/edit' component={CharacterEdit} />
+                    <Route path='/characters/:characterId/delete' component={CharacterDelete} />
                     <Route path='/scenarios' exact component={ScenarioList} />
                     <Route path='/scenarios/new' component={ScenarioCreate} />
                     <Route path='/scenarios/:scenarioId' exact component={Scenario} />

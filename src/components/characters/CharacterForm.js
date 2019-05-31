@@ -44,6 +44,28 @@ class CharacterForm extends Component {
                     <div className="six wide field">
                         <Field name="name" component={this.renderInput} label="Character Name" />
                     </div>
+                    <div className="six wide field">
+                        <div className="fields">
+                            <div className="three wide field">
+                                <Field name="str" component={this.renderInput} label="STR" />
+                            </div>
+                            <div className="three wide field">
+                                <Field name="dex" component={this.renderInput} label="DEX" />
+                            </div>
+                            <div className="three wide field">
+                                <Field name="con" component={this.renderInput} label="CON" />
+                            </div>
+                            <div className="three wide field">
+                                <Field name="int" component={this.renderInput} label="INT" />
+                            </div>
+                            <div className="three wide field">
+                                <Field name="wis" component={this.renderInput} label="WIS" />
+                            </div>
+                            <div className="three wide field">
+                                <Field name="cha" component={this.renderInput} label="CHA" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="fields">
                     <div className="two wide field">
