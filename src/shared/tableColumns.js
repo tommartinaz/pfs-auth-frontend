@@ -58,5 +58,17 @@ export const scenarioTableColumns = [
     {
         accessor: 'high_level',
         Header: 'High Level'
+    },
+    {
+        accessor: 'edit',
+        Header: 'Manage',
+        Cell: row => {
+            return (
+                <div style={{display: 'flex'}}>
+                    <Link to={`/scenarios/${row.original.id}`}>View</Link>
+                    <Link to={`/scenarios/${row.original.id}/edit`}>Edit</Link>
+                </div>
+            )
+        }
     }
 ];

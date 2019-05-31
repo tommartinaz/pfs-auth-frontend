@@ -14,12 +14,17 @@ import CharacterCreate from './components/characters/CharacterCreate';
 import CharacterEdit from './components/characters/CharacterEdit';
 import Character from './components/characters/Character';
 import ScenarioList from './components/scenarios/ScenarioList';
+import Home from './components/Home';
+import ScenarioCreate from './components/scenarios/ScenarioCreate';
+import ScenarioEdit from './components/scenarios/ScenarioEdit';
+import Scenario from './components/scenarios/Scenario';
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <App>
                 <Switch>
+                    <Route path='/' exact component={Home} />
                     <Route path='/signup' component={Signup} />
                     <Route path='/signin' component={Signin} />
                     <Route path='/signout' component={Signout} />
@@ -27,7 +32,10 @@ ReactDOM.render(
                     <Route path='/characters/new' component={CharacterCreate} />
                     <Route path='/characters/:characterId' exact component={Character} />
                     <Route path='/characters/:characterId/edit' component={CharacterEdit} />
-                    <Route path='/scenarios' component={ScenarioList} />
+                    <Route path='/scenarios' exact component={ScenarioList} />
+                    <Route path='/scenarios/new' component={ScenarioCreate} />
+                    <Route path='/scenarios/:scenarioId' exact component={Scenario} />
+                    <Route path='/scenarios/:scenarioId/edit' component={ScenarioEdit} />
                 </Switch>
             </App>
         </BrowserRouter>

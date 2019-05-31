@@ -1,4 +1,4 @@
-import { FETCH_CHARACTERS, CREATE_CHARACTER, EDIT_CHARACTER, FETCH_CHARACTER } from "../types";
+import { FETCH_CHARACTERS, CREATE_CHARACTER, EDIT_CHARACTER, FETCH_CHARACTER, DELETE_CHARACTER } from "../types";
 import _ from 'lodash';
 
 export default (state = {}, action) => {
@@ -11,6 +11,8 @@ export default (state = {}, action) => {
             return { ...state, [action.payload.id]: action.payload };
         case EDIT_CHARACTER:
             return { ...state, [action.payload.id]: action.payload };
+        case DELETE_CHARACTER:
+            return _.omit(state, action.payload);
         default:
             return state;
     }

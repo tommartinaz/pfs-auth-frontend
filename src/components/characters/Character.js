@@ -8,9 +8,8 @@ class Character extends Component {
     }
 
     render() {
-        return (
+        return !this.props.character ? <div>Loading...</div> :
             <div>{this.props.character.name}</div>
-        );
     }
 }
 
