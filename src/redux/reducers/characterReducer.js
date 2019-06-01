@@ -12,7 +12,8 @@ export default (state = {}, action) => {
         case EDIT_CHARACTER:
             return { ...state, [action.payload.id]: action.payload };
         case DELETE_CHARACTER:
-            return _.omit(state, action.payload);
+            console.log(action.payload)
+            return _.omit(state, [action.payload]);
         default:
             return state;
     }
