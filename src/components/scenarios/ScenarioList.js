@@ -3,25 +3,44 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Table, Select, Input } from 'semantic-ui-react';
 import { fetchScenarios } from '../../redux/actions/scenarioActions';
 import { scenarioTableColumns } from '../../shared/tableColumns';
 
 class ScenarioList extends Component {
     state = {
-        season: ''
+        selectedSeason: ''
     }
     componentDidMount() {
         this.props.fetchScenarios();
     }
 
     filterScenariosBySeason = (scenarios) => {
-        console.log(scenarios)
-        if(this.state.season) {
-            return scenarios.filter(scenario => scenario.season_number === this.state.season);
+        const { selectedSeason } = this.state;
+        if(selectedSeason) {
+            return scenarios.filter(scenario => scenario.season_number === selectedSeason);
         } else {
             return scenarios;
         }
+    }
+
+    renderSelector = () => {
+        const { scenarios } = this.props;
+        const seasonsList = [
+            { key: 'all', text: 'All', value: '' },
+            { key: 0, text: 'Season 0', value: 0 }
+        ];
+        const latestSeason = scenarios.length ? scenarios[scenarios.length-1].season_number : 11;
+        for(let i = 1; i <= latestSeason; i++) {
+            seasonsList.push({ key: i, text: `Season ${i}`, value: i });
+        }
+        return (
+            <Select
+                placeholder='Filter by Season'
+                options={seasonsList}
+                onChange={(e, { value }) => this.setState({ selectedSeason: value })}
+            />
+        )
     }
 
     renderTableRows() {
@@ -55,12 +74,11 @@ class ScenarioList extends Component {
     render() {
         return (
             <div>
-                <Button onClick={() => this.props.history.push(`/scenarios/new`)}>Create a new scenario</Button>
-                {/* <ReactTable 
-                    data={this.props.scenarios}
-                    columns={scenarioTableColumns}
-                    filterable={true}
-                /> */}
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+
+                    {this.renderSelector()}
+                    <Link to='/scenarios/new' className='ui button green'>Create a new scenario</Link>
+                </div>
                 <Table>
                     <Table.Header>
                         <Table.Row>
