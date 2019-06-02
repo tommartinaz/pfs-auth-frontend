@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Header, Icon } from 'semantic-ui-react';
 import { editCharacter, fetchCharacter } from '../../redux/actions/characterActions';
 import CharacterForm from './CharacterForm';
 
@@ -18,13 +19,24 @@ class CharacterEdit extends Component {
             return <div>Loading...</div>;
         }
         return (
-            <div>
-                <h3>Edit {character.name}</h3>
+            <>
+                <Header as='h3' icon textAlign='center'>
+                    <Icon name='user' />
+                    Edit {character.name}
+                </Header>
                 <CharacterForm
                     onSubmit={this.onSubmit}
                     initialValues={character}
                 />
-            </div>
+            </>
+
+            // <div>
+            //     <h3>Edit {character.name}</h3>
+            //     <CharacterForm
+            //         onSubmit={this.onSubmit}
+            //         initialValues={character}
+            //     />
+            // </div>
         );
     }
 }

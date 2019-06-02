@@ -31,6 +31,7 @@ export const characterColumns = () => {
                     <div style={{display: 'flex'}}>
                         <Link to={`/characters/${row.original.id}`}>View</Link>
                         <Link to={`/characters/${row.original.id}/edit`}>Edit</Link>
+                        <Link type='button' to={`/characters/${row.original.id}/delete`}>Delete</Link>
                     </div>
                 )
             }
@@ -67,6 +68,7 @@ export const scenarioTableColumns = [
                 <div style={{display: 'flex'}}>
                     <Link to={`/scenarios/${row.original.id}`}>View</Link>
                     <Link to={`/scenarios/${row.original.id}/edit`}>Edit</Link>
+                    <Link type='button' to={`/scenarios/${row.original.id}/delete`}>Delete</Link>
                 </div>
             )
         }

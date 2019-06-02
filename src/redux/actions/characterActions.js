@@ -1,5 +1,5 @@
 import pfsApi from '../../api';
-import { FETCH_CHARACTERS, CREATE_CHARACTER, EDIT_CHARACTER, FETCH_CHARACTER } from "../types";
+import { FETCH_CHARACTERS, CREATE_CHARACTER, EDIT_CHARACTER, FETCH_CHARACTER, DELETE_CHARACTER } from "../types";
 
 export const fetchCharacters = () => async dispatch => {
     const headers = {
@@ -36,5 +36,13 @@ export const editCharacter = formValues => async dispatch => {
     dispatch({
         type: EDIT_CHARACTER,
         payload: response.data
+    });
+};
+
+export const deleteCharacter = characterId => async dispatch => {
+    await pfsApi.delete(`/api/characters/${characterId}`);
+    dispatch({
+        type: DELETE_CHARACTER,
+        payload: characterId
     });
 };
