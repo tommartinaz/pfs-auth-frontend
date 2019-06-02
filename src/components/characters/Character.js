@@ -18,7 +18,7 @@ class Character extends Component {
 
     deleteCharacter = () => {
         this.props.deleteCharacter(this.props.match.params.characterId);
-        this.history.push('/characters');
+        this.props.history.push('/characters');
     }
 
     render() {

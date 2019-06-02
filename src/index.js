@@ -19,11 +19,10 @@ import ScenarioCreate from './components/scenarios/ScenarioCreate';
 import ScenarioEdit from './components/scenarios/ScenarioEdit';
 import Scenario from './components/scenarios/Scenario';
 import CharacterDelete from './components/characters/CharacterDelete';
-import history from './history';
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter history={history}>
+        <BrowserRouter>
             <App>
                 <Switch>
                     <Route path='/' exact component={Home} />
