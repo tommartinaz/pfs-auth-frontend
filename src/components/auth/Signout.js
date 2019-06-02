@@ -6,6 +6,7 @@ import * as actions from '../../redux/actions/authActions';
 class Signout extends Component {
     componentDidMount() {
         this.props.signout();
+        this.props.history.push('/signin');
     }
 
     render() {
