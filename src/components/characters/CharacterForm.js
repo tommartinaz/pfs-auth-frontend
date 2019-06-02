@@ -34,6 +34,7 @@ class CharacterForm extends Component {
                 onChange={(e, { value }) => input.onChange(value)}
                 options={list}
                 value={input.value}
+                placeholder={`Please select the ${label}`}
             />
         );
     }
