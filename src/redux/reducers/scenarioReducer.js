@@ -12,7 +12,7 @@ export default (state = {}, action) => {
         case CREATE_SCENARIO:
             return { ...state, [action.payload.id]: action.payload };
         case DELETE_SCENARIO:
-            return _.omit(state, action.payload);
+            return _.omit(state, [action.payload]);
         default:
             return state;
     }
