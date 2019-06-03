@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Table, Button } from 'semantic-ui-react';
-import _ from 'lodash';
+// import _ from 'lodash';
 import { fetchCharacters } from '../../redux/actions/characterActions';
 import requireAuth from '../requireAuth';
 

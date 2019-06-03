@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Form, Grid, Segment, Header } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import * as actions from '../../redux/actions/authActions';
 

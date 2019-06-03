@@ -3,7 +3,6 @@ import { reduxForm, Field } from 'redux-form';
 import {
     Button,
     Form,
-    Grid,
     Icon
 } from 'semantic-ui-react';
 

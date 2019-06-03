@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { Button, Form, Grid, Message, Segment, Header, Input } from 'semantic-ui-react';
+import { Button, Form, Grid, Message, Segment, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import * as actions from '../../redux/actions/authActions';
@@ -31,7 +31,6 @@ class Signin extends Component {
 
     render() {
         const { handleSubmit } = this.props;
-        const { password } = this.state;
         return (
             <Grid textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>

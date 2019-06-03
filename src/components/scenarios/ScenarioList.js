@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import ReactTable from 'react-table';
-import { Button, Table, Select, Input } from 'semantic-ui-react';
+import { Button, Table, Select } from 'semantic-ui-react';
 import { fetchScenarios } from '../../redux/actions/scenarioActions';
-import { scenarioTableColumns } from '../../shared/tableColumns';
 
 class ScenarioList extends Component {
     state = {
@@ -45,7 +42,6 @@ class ScenarioList extends Component {
 
     renderTableRows() {
         const { scenarios } = this.props;
-        const { season } = this.state;
         if(scenarios.length) {
             return this.filterScenariosBySeason(scenarios)
                 .map(scenario => {
