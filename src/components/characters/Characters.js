@@ -24,11 +24,11 @@ class Characters extends Component {
                         <Table.Cell>{races[character.race_id].name}</Table.Cell>
                         <Table.Cell>{classes[character.class_id].name}</Table.Cell>
                         <Table.Cell>
-                            <Link to={`/characters/${character.id}/edit`}>
-                                <Button icon='edit' size='tiny' color='green' />
-                            </Link>
                             <Link to={`/characters/${character.id}`}>
                                 <Button icon='eye' size='tiny' color='blue' />
+                            </Link>
+                            <Link to={`/characters/${character.id}/edit`}>
+                                <Button icon='edit' size='tiny' color='green' />
                             </Link>
                         </Table.Cell>
                     </Table.Row>

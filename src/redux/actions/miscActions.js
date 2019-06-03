@@ -1,5 +1,5 @@
 import pfsApi from '../../api';
-import { FETCH_RACES, FETCH_CLASSES, FETCH_ALIGNMENTS } from '../types';
+import { FETCH_RACES, FETCH_CLASSES, FETCH_ALIGNMENTS, FETCH_SESSIONS } from '../types';
 
 export const fetchRaces = () => async dispatch => {
     const response = await pfsApi.get('/api/races');

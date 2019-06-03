@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Table, Select } from 'semantic-ui-react';
-import { fetchScenarios } from '../../redux/actions/scenarioActions';
+import * as scenarioActions from '../../redux/actions/scenarioActions';
+import * as sessionActions from '../../redux/actions/sessionActions';
 
 class ScenarioList extends Component {
     state = {
@@ -10,14 +11,17 @@ class ScenarioList extends Component {
     }
     componentDidMount() {
         this.props.fetchScenarios();
+        this.props.fetchSessions();
     }
 
     filterScenariosBySeason = (scenarios) => {
         const { selectedSeason } = this.state;
+        const mappedScenarios = this.checkIfPlayedByPlayer();
+        console.log(mappedScenarios)
         if(selectedSeason) {
-            return scenarios.filter(scenario => scenario.season_number === selectedSeason);
+            return mappedScenarios.filter(scenario => scenario.season_number === selectedSeason);
         } else {
-            return scenarios;
+            return mappedScenarios;
         }
     }
 
@@ -40,14 +44,31 @@ class ScenarioList extends Component {
         )
     }
 
+    checkIfPlayedByPlayer = () => {
+        const { sessions, scenarios } = this.props;
+        return scenarios.map(scenario => {
+            return { ...scenario, played: sessions.filter(session => session.scenario_id === scenario.id).length > 0 }
+        });
+    }
+
+    togglePlayed = scenario => {
+        const player_id = localStorage.getItem('playerId');
+        if(scenario.played) {
+            console.log('Mark unplayed');
+        } else {
+            console.log('Mark played');
+            this.props.createSession(player_id, scenario.id);
+        }
+    }
+
     renderTableRows() {
-        const { scenarios } = this.props;
+        const { scenarios, authenticated } = this.props;
         if(scenarios.length) {
             return this.filterScenariosBySeason(scenarios)
                 .map(scenario => {
-                    const { id, season_number, scenario_number, name, low_level, high_level } = scenario;
+                    const { id, season_number, played, scenario_number, name, low_level, high_level } = scenario;
                     return (
-                        <Table.Row key={id}>
+                        <Table.Row key={id} className={played ? 'negative' : 'positive'}>
                             <Table.Cell>{season_number}</Table.Cell>
                             <Table.Cell>{scenario_number}</Table.Cell>
                             <Table.Cell>{name}</Table.Cell>
@@ -60,6 +81,7 @@ class ScenarioList extends Component {
                                 <Link to={`/scenarios/${id}/edit`}>
                                     <Button icon='edit' size='tiny' color='green' />
                                 </Link>
+                                {authenticated && <Button icon='user' size='tiny' color='orange' onClick={() => this.togglePlayed(scenario)} />}
                             </Table.Cell>
                         </Table.Row>
                     )
@@ -95,8 +117,13 @@ class ScenarioList extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    scenarios: Object.values(state.scenarios).sort((a, b) => a.season_number - b.season_number || a.scenario_number - b.scenario_number)
-});
+const mapStateToProps = state => {
+    const player_id = localStorage.getItem('playerId');
+    return {
+        scenarios: Object.values(state.scenarios).sort((a, b) => a.season_number - b.season_number || a.scenario_number - b.scenario_number),
+        sessions: state.sessions.sessions || [],
+        authenticated: state.auth.authenticated
+    };
+};
 
-export default connect(mapStateToProps, { fetchScenarios })(ScenarioList);
+export default connect(mapStateToProps, { ...scenarioActions, ...sessionActions })(ScenarioList);

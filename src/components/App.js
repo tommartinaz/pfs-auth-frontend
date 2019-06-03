@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import * as actions from '../redux/actions/miscActions';
+import * as miscActions from '../redux/actions/miscActions';
 
 class App extends React.Component {
     componentDidMount() {
@@ -20,4 +20,4 @@ class App extends React.Component {
     }
 }
 
-export default connect(null, actions)(App);
+export default connect(null, { ...miscActions })(App);

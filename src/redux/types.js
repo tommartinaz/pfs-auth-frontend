@@ -11,6 +11,10 @@ export const FETCH_ALIGNMENTS = 'fetch_alignments';
 export const FETCH_RACES = 'fetch_races';
 export const FETCH_CLASSES = 'fetch_classes';
 
+export const FETCH_SESSIONS = 'fetch_sessions';
+export const CREATE_SESSION = 'create_session';
+export const DELETE_SESSION = 'delete_session';
+
 export const FETCH_SCENARIOS = 'fetch_scenarios';
 export const FETCH_SCENARIO = 'fetch_scenario';
 export const CREATE_SCENARIO = 'create_scenario';
