@@ -1,5 +1,6 @@
 export const AUTH_USER = 'auth_user';
 export const AUTH_ERROR = 'auth_error';
+export const BASE_URL = 'http://localhost:8000';
 
 export const FETCH_CHARACTERS = 'fetch_characters';
 export const FETCH_CHARACTER = 'fetch_character';
