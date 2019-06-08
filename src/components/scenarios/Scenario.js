@@ -20,8 +20,8 @@ class Scenario extends Component {
         this.setState({ modalOpen: false });
     }
 
-    deleteScenario = () => {
-        this.props.deleteScenario(this.props.match.params.scenarioId);
+    deleteScenario = async () => {
+        await this.props.deleteScenario(this.props.match.params.scenarioId);
         this.props.history.push('/scenarios');
     }
 

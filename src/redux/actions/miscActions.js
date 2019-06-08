@@ -1,26 +1,31 @@
-import pfsApi from '../../api';
-import { FETCH_RACES, FETCH_CLASSES, FETCH_ALIGNMENTS } from '../types';
+import { FETCH_RACES, FETCH_CLASSES, FETCH_ALIGNMENTS, BASE_URL } from '../types';
 
 export const fetchRaces = () => async dispatch => {
-    const response = await pfsApi.get('/api/races');
-    dispatch({
-        type: FETCH_RACES,
-        payload: response.data
-    });
+    const response = await fetch(`${BASE_URL}/api/races`);
+    if(response.ok) {
+        response.json().then(data => dispatch({
+            type: FETCH_RACES,
+            payload: data
+        }));
+    }
 };
 
 export const fetchAlignments = () => async dispatch => {
-    const response = await pfsApi.get('/api/alignments');
-    dispatch({
-        type: FETCH_ALIGNMENTS,
-        payload: response.data
-    });
+    const response = await fetch(`${BASE_URL}/api/alignments`);
+    if(response.ok) {
+        response.json().then(data => dispatch({
+            type: FETCH_ALIGNMENTS,
+            payload: data
+        }));
+    }
 };
 
 export const fetchClasses = () => async dispatch => {
-    const response = await pfsApi.get('/api/classes');
-    dispatch({
-        type: FETCH_CLASSES,
-        payload: response.data
-    });
+    const response = await fetch(`${BASE_URL}/api/classes`);
+    if(response.ok) {
+        response.json().then(data => dispatch({
+            type: FETCH_CLASSES,
+            payload: data
+        }));
+    }
 };

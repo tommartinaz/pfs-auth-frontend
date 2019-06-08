@@ -8,8 +8,9 @@ class ScenarioEdit extends Component {
         this.props.fetchScenario(this.props.match.params.scenarioId);
     }
 
-    onSubmit = formValues => {
-        this.props.editScenario({ ...formValues, id: this.props.match.params.scenarioId }).then(this.props.history.push('/scenarios'));
+    onSubmit = async formValues => {
+        await this.props.editScenario({ ...formValues, id: this.props.match.params.scenarioId });
+        this.props.history.push('/scenarios');
     }
 
     render() {

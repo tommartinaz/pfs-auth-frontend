@@ -19,7 +19,7 @@ class CharacterForm extends Component {
                 label={label}
             />
         );
-    }
+    };
 
     renderSelector = ({ input, label, selector }) => {
         const list = selector.map(el => {
@@ -37,7 +37,7 @@ class CharacterForm extends Component {
                 placeholder={`Please select the ${label}`}
             />
         );
-    }
+    };
 
     renderCheckbox = ({ input, label, name}) => {
         return (
@@ -48,11 +48,11 @@ class CharacterForm extends Component {
                 onChange={(e, { checked }) => input.onChange(checked)}
             />
         )
-    }
+    };
 
     onSubmit = formValues => {
-        this.props.onSubmit(formValues);;
-    }
+        this.props.onSubmit(formValues);
+    };
 
     render() {
         const { handleSubmit, pristine, reset, alignments, races, classes } = this.props;
@@ -120,7 +120,7 @@ const mapStateToProps = state => {
         classes: Object.values(classes),
         races: Object.values(races)
     }
-}
+};
 export default compose(
     connect(mapStateToProps),
     reduxForm({

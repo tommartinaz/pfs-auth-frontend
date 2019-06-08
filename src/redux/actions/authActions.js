@@ -1,16 +1,23 @@
-import pfsApi from '../../api';
-import { AUTH_ERROR, AUTH_USER } from '../types';
+// import pfsApi from '../../api';
+import { AUTH_ERROR, AUTH_USER, BASE_URL } from '../types';
 
 export const signup = (formValues, callback) => async dispatch => {
     try {
-        const response = await pfsApi.post('/signup', formValues);
-        dispatch({
-            type: AUTH_USER,
-            payload: response.data.token
+        const response = await fetch(`${BASE_URL}/signup`, {
+            method: 'POST',
+            body: JSON.stringify(formValues)
         });
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('playerId', response.data.id);
-        callback();
+        if(response.ok) {
+            response.json().then(data => {
+                dispatch({
+                    type: AUTH_USER,
+                    payload: data.token
+                })
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('playerId', data.id);
+            });
+            callback();
+        }
     }
     catch(e) {
         dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
@@ -25,14 +32,21 @@ export const signout = () => {
 
 export const signin = (formValues, callback) => async dispatch => {
     try {
-        const response = await pfsApi.post('/signin', formValues);
-        dispatch({
-            type: AUTH_USER,
-            payload: response.data.token
+        const response = await fetch(`${BASE_URL}/signin`, {
+            method: 'POST',
+            body: JSON.stringify(formValues)
         });
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('playerId', response.data.id);
-        callback();
+        if(response.ok) {
+            response.json().then(data => {
+                dispatch({
+                    type: AUTH_USER,
+                    payload: data.token
+                });
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('playerId', data.id);
+            });
+            callback();
+        }
     }
     catch(e) {
         dispatch({ type: AUTH_ERROR, payload: 'Wrong email or password' });

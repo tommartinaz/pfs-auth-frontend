@@ -79,7 +79,7 @@ class ScenarioForm extends React.Component {
                         placeholder='Enter the description here...'
                     />
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <Form.Group centered>
+                    <Form.Group centered='true'>
 
                     <Button className="positive" animated='vertical' disabled={pristine}>
                         <Button.Content visible>Save</Button.Content>

@@ -8,8 +8,8 @@ class CharacterDelete extends Component {
         this.props.fetchCharacter(this.props.match.params.characterId);
     }
 
-    deleteCharacter = id => {
-        this.props.deleteCharacter(id);
+    deleteCharacter = async id => {
+        await this.props.deleteCharacter(id);
         this.props.history.push('/characters');
     }
 
